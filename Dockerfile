@@ -8,10 +8,12 @@ COPY overrides/weblate/checks/source_engine.py overrides/weblate/checks/models.p
 
 #COPY overrides/weblate_language_data/aliases.py overrides/weblate_language_data/language_codes.py /usr/local/lib/python3.11/site-packages/weblate_language_data/
 
-HEALTHCHECK --interval=30s --timeout=3s CMD /app/bin/health_check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5m CMD /app/bin/health_check
 SHELL ["/bin/bash", "-o", "pipefail", "-x", "-c"]
 EXPOSE 8080
 VOLUME /app/data
 VOLUME /app/cache
+VOLUME /tmp
+VOLUME /run
 ENTRYPOINT ["/app/bin/start"]
 CMD ["runserver"]
