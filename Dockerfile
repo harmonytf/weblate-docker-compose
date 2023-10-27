@@ -1,4 +1,4 @@
-FROM weblate/weblate:4.18.1.1
+FROM weblate/weblate:5.0.2.2
 
 COPY overrides/translate/vdf.py /usr/local/lib/python3.11/site-packages/translate/storage/vdf.py
 
